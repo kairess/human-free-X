@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human-Free X - YouTube 빵형의 개발도상국</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        
+        .post-meta, .comment-meta {
+            font-weight: 300;
+        }
+        .content {
+            flex: 1 0 auto;
+        }
+        .post {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            text-align: left;
+        }
+        .post p {
+            margin: 0 0 10px 0;
+        }
+        .comment {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #ffffff;
+            font-size: 0.9em;  /* 댓글 글씨 크기를 약간 줄임 */
+        }
+        .comment p {
+            margin: 0 0 5px 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 5px;
+        }
+        input[type="submit"] {
+            padding: 5px 10px;
+        }
+        footer {
+            border-radius: 4px;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            text-align: center;
+            flex-shrink: 0;
+            font-size: 0.8em;
+        }
+        footer a {
+            color: #333;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .post-meta {
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .comment-meta {
+            font-size: 0.75em;
+            color: #888;
+        }
+        a {
+            color: #888;
+            text-decoration: none;
+        }
+        a:visited {
+            color: #888;
+        }
+        .post-meta span, .comment-meta span {
+            border-bottom: 1px dotted #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>Created by <a href="https://www.youtube.com/@bbanghyong" target="_blank">YouTube 빵형의 개발도상국</a></p>
+    </footer>
+</body>
+</html>

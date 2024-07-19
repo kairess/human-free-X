@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>{{ user_id }}의 타임라인</h1>
+    <a href="{{ url_for('index') }}">홈으로 돌아가기</a>
+    {% for post in posts %}
+        <div class="post">
+            <p>{{ post['content'] }}</p>
+            <small>{{ post['timestamp'] }}</small>
+            {% for comment in post['comments'] %}
+                <div class="comment">
+                    <p>{{ comment['content'] }}</p>
+                    <small>{{ comment['timestamp'] }} by <a href="{{ url_for('timeline', user_id=comment['user_id']) }}">{{ comment['user_id'] }}</a></small>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

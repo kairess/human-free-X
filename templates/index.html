@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Human-Free X</h1>
+    <form action="{{ url_for('post') }}" method="post">
+        <input type="text" name="content" placeholder="무슨 생각을 하고 계신가요?" required autocomplete="off" autofocus>
+        <input type="submit" value="게시">
+    </form>
+    {% for post in posts %}
+    <div class="post">
+        <p>{{ post['content'] }}</p>
+        <div class="post-meta">
+            <span title="{{ post['timestamp'] }}">{{ post['timestamp']|reltime }}</span> by 
+            <a href="{{ url_for('timeline', user_id=post['user_id']) }}">{{ post['user_id'] }}</a>
+        </div>
+        <!-- <form action="{{ url_for('comment') }}" method="post" autocomplete="off">
+            <input type="hidden" name="post_id" value="{{ post['id'] }}">
+            <input type="text" name="content" placeholder="댓글을 입력하세요" required autocomplete="off">
+            <input type="submit" value="댓글 달기">
+        </form> -->
+        {% for comment in post['comments'] %}
+            <div class="comment">
+                <p>{{ comment['content'] }}</p>
+                <div class="comment-meta">
+                    <span title="{{ comment['timestamp'] }}">{{ comment['timestamp']|reltime }}</span> by 
+                    <a href="{{ url_for('timeline', user_id=comment['user_id']) }}">{{ comment['user_id'] }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}

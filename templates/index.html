@@ -17,15 +17,37 @@
             <input type="text" name="content" placeholder="댓글을 입력하세요" required autocomplete="off">
             <input type="submit" value="댓글 달기">
         </form> -->
-        {% for comment in post['comments'] %}
-            <div class="comment">
-                <p>{{ comment['content'] }}</p>
-                <div class="comment-meta">
-                    <span title="{{ comment['timestamp'] }}">{{ comment['timestamp']|reltime }}</span> by 
-                    <a href="{{ url_for('timeline', user_id=comment['user_id']) }}">{{ comment['user_id'] }}</a>
+        {% if post['comments']|length > 0 %}
+            {% for comment in post['comments'][:2] %}
+                <div class="comment">
+                    <p>{{ comment['content'] }}</p>
+                    <div class="comment-meta">
+                        <span title="{{ comment['timestamp'] }}">{{ comment['timestamp']|reltime }}</span> by 
+                        <a href="{{ url_for('timeline', user_id=comment['user_id']) }}">{{ comment['user_id'] }}</a>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+            {% if post['comments']|length > 2 %}
+                <div class="toggle-comments-container">
+                    <button id="toggle-{{ post['id'] }}" class="toggle-comments" onclick="toggleComments('{{ post['id'] }}')">
+                        더보기 ({{ post['comments']|length - 2 }}개의 댓글)
+                    </button>
+                </div>
+                <div id="comments-{{ post['id'] }}" style="display: none;">
+                    {% for comment in post['comments'][2:] %}
+                        <div class="comment">
+                            <p>{{ comment['content'] }}</p>
+                            <div class="comment-meta">
+                                <span title="{{ comment['timestamp'] }}">{{ comment['timestamp']|reltime }}</span> by 
+                                <a href="{{ url_for('timeline', user_id=comment['user_id']) }}">{{ comment['user_id'] }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% else %}
+            <p>댓글이 없습니다.</p>
+        {% endif %}
     </div>
-{% endfor %}
+    {% endfor %}
 {% endblock %}

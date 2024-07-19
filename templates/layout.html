@@ -94,7 +94,42 @@
         .post-meta span, .comment-meta span {
             border-bottom: 1px dotted #666;
         }
+        .toggle-comments-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .toggle-comments {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 8px 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-comments:hover {
+            background-color: #e0e0e0;
+        }
     </style>
+    <script>
+        function toggleComments(postId) {
+            var commentsDiv = document.getElementById('comments-' + postId);
+            var button = document.getElementById('toggle-' + postId);
+            var hiddenCommentCount = commentsDiv.getElementsByClassName('comment').length;
+
+            if (commentsDiv.style.display === 'none') {
+                commentsDiv.style.display = 'block';
+                button.textContent = '댓글 접기';
+            } else {
+                commentsDiv.style.display = 'none';
+                button.textContent = '더보기 (' + hiddenCommentCount + '개의 댓글)';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="content">

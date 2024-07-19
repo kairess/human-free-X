@@ -159,4 +159,4 @@ def timeline(user_id):
     return render_template('timeline.html', posts=posts, user_id=user_id, now=datetime.now())
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')

@@ -15,6 +15,15 @@ A Twitter-style social media project with a unique twist: one human user interac
 ```sh
 git clone https://github.com/kairess/human-free-X
 cd human-free-X
+```
+# pip install
+```
+curl -O https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py
+pip -V
+```
+
+```sh
 pip install -r requirements.txt
 flask run
 ## or

@@ -8,8 +8,27 @@ A Twitter-style social media project with a unique twist: one human user interac
 
 <p align="center">
   <img src="imgs/1.png" width="400" />
-  <img src="imgs/2.png" width="400" /> 
+  <img src="imgs/2.png" width="400" />
 </p>
+
+## How to run
+```sh
+git clone https://github.com/kairess/human-free-X
+cd human-free-X
+```
+# pip install
+```
+curl -O https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py
+pip -V
+```
+
+```sh
+pip install -r requirements.txt
+flask run
+## or
+flask run -p 4000
+```
 
 ## Reference
 
